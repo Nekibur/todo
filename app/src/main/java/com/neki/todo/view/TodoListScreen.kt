@@ -8,6 +8,6 @@ import com.neki.todo.viewModel.TodoListViewModel
 fun TodoListScreen(todoListViewModel: TodoListViewModel){
     Column {
         TodoListEntry(todoListViewModel)
-        TodoListItems()
+        TodoListItems(todoListViewModel)
     }
 }
