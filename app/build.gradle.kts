@@ -2,8 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    id("com.google.devtools.ksp")
-    id("dagger.hilt.android.plugin")
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -67,13 +67,12 @@ dependencies {
     //Image
     implementation(libs.coil.compose)
 
+    //Room
     implementation(libs.androidx.room.runtime)
-    ksp(libs.androidx.room.compiler)
+    implementation("androidx.room:room-ktx:2.5.1")
+    kapt(libs.androidx.room.compiler)
 
-    val hilt_version = "2.38.1"  // Replace with your Hilt version
-
-    // Dagger Hilt dependencies
-    implementation("com.google.dagger:hilt-android:$hilt_version")
-    ksp("com.google.dagger:hilt-compiler:$hilt_version")
+    implementation("com.google.dagger:hilt-android:2.55")
+    kapt("com.google.dagger:hilt-compiler:2.55")
 
 }

@@ -1,5 +1,6 @@
 package com.neki.todo.util
 
+import android.app.Application
 import android.content.Context
 import androidx.room.Room
 import com.neki.todo.dao.TdoListDao
@@ -17,7 +18,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideRoomDatabase(context: Context):AppDatabase{
+    fun provideRoomDatabase(context: Application):AppDatabase{
         return  Room.databaseBuilder(
             context,
             AppDatabase::class.java,
