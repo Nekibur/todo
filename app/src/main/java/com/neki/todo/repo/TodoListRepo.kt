@@ -12,4 +12,8 @@ class TodoListRepo @Inject constructor(
     suspend fun insert(todoList: TodoList){
         todoListDao.insert(todoList)
     }
+
+    suspend fun delete(todoList: TodoList){
+        todoListDao.delete(todoList)
+    }
 }

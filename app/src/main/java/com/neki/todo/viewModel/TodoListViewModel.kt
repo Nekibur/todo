@@ -30,4 +30,10 @@ class TodoListViewModel @Inject constructor(
             todoListRepo.insert(todoList)
         }
     }
+
+    fun delete(todoList: TodoList){
+        viewModelScope.launch {
+            todoListRepo.delete(todoList)
+        }
+    }
 }
