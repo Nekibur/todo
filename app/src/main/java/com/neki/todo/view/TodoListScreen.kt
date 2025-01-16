@@ -1,6 +1,7 @@
 package com.neki.todo.view
 
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -11,13 +12,18 @@ import androidx.compose.ui.unit.dp
 import com.neki.todo.viewModel.TodoListViewModel
 
 @Composable
-fun TodoListScreen(todoListViewModel: TodoListViewModel){
-    Column(
+fun TodoListScreen(todoListViewModel: TodoListViewModel,ntna:()->Unit){
+    Box(
         modifier = Modifier.fillMaxSize()
-            .border(2.dp, Color.Red)
-            .padding(10.dp)
     ) {
-        TodoListEntry(todoListViewModel)
-        TodoListItems(todoListViewModel)
+        Column(
+            modifier = Modifier.fillMaxSize()
+                .border(2.dp, Color.Red)
+                .padding(10.dp)
+        ) {
+            TodoListEntry(todoListViewModel)
+            TodoListItems(todoListViewModel)
+        }
+        SettingFloatingButton { ntna()  }
     }
 }

@@ -1,5 +1,6 @@
 package com.neki.todo
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -27,7 +28,10 @@ class MainActivity : ComponentActivity() {
 //        enableEdgeToEdge()
         setContent {
             TodoTheme {
-                TodoListScreen(todoListViewModel)
+                TodoListScreen(todoListViewModel){
+                    val intent=Intent(this@MainActivity,SettingActivity::class.java)
+                    startActivity(intent)
+                }
             }
         }
     }
