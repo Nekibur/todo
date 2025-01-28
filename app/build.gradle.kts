@@ -61,6 +61,7 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation("androidx.webkit:webkit:1.9.0")
 
     //Retrofit
     implementation (libs.retrofit)
