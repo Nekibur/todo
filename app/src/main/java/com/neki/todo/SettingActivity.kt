@@ -7,6 +7,7 @@ import android.webkit.ConsoleMessage
 import android.webkit.WebChromeClient
 import android.webkit.WebSettings
 import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -17,6 +18,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 class SettingActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+//        WebView.setWebContentsDebuggingEnabled(true)
         setContent {
             WebViewScreen(url = "https://eduaid.co.in/angular-mrkt3g7k48/")
         }
@@ -38,6 +40,7 @@ fun WebViewScreen(url: String) {
                 setSupportMultipleWindows(true)
                 userAgentString = WebSettings.getDefaultUserAgent(context)
                 javaScriptCanOpenWindowsAutomatically = true
+
             }
             webChromeClient = object : WebChromeClient() {
                 override fun onConsoleMessage(consoleMessage: ConsoleMessage): Boolean {
@@ -46,6 +49,12 @@ fun WebViewScreen(url: String) {
                     return false
                 }
 
+            }
+            webViewClient = object : WebViewClient() {
+                override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
+                    url?.let { view?.loadUrl(it) }
+                    return true
+                }
             }
             loadUrl(url)
         }
